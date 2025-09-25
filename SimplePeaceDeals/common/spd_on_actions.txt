@@ -1,0 +1,27 @@
+on_actions = {
+    on_control_state = {
+        effect = {
+            controller = root
+            
+            if = {
+                limit = {
+                    is_major = yes
+                    is_at_war = yes
+                    any_war = {
+                        is_war_leader = yes
+                        any_war_participant = {
+                            is_war_leader = yes
+                            NOT = { is_in_faction_with = root }
+                            has_war_goal_on = {
+                                state = state_id
+                                target = PREV.PREV.PREV.controller
+                                type = take_state
+                            }
+                        }
+                    }
+                }
+                country_event = { id = simple_peace.1 hours = 1 }
+            }
+        }
+    }
+}

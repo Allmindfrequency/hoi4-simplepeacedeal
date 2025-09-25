@@ -1,0 +1,14 @@
+l_english:
+simple_peace.1.t: "Peace Opportunity"
+simple_peace.1.d: "Our forces have secured complete control of our objectives, which was our primary war goal against our Enemy. Should we extend an offer for a negotiated peace to conclude the war now?"
+simple_peace.1.a: "Yes, offer peace in exchange for the state."
+simple_peace.1.b: "We keep fighting. There's more to get."
+
+simple_peace.2.t: "Peace Offer from our Enemy"
+simple_peace.2.d: "Our enemy has offered to end the war in exchange for control of the state they justified. Should we accept this terms?"
+simple_peace.2.a: "Accept their terms and end the war."
+simple_peace.2.b: "We shall fight on the beaches."
+
+simple_peace.3.t: "Peace Offer Rejected"
+simple_peace.3.d: "our Enemy has rejected our peace offer. The war continues."
+simple_peace.3.a: "They shall know the taste of our boots!"

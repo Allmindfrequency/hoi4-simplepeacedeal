@@ -1,0 +1,96 @@
+add_namespace = simple_peace
+
+country_event = {
+    id = simple_peace.1
+    title = simple_peace.1.t
+    desc = simple_peace.1.d
+    picture = GFX_report_event_war_situation
+    is_triggered_only = yes
+    
+    immediate = {
+        set_variable = { which = peace_deal_state value = state_id }
+        set_variable = { which = enemy_war_leader value = from }
+    }
+
+    option = {
+        name = simple_peace.1.a
+        ai_chance = {
+            base = 80
+            modifier = {
+                factor = 0.5
+                has_war_support > 0.7
+            }
+            modifier = {
+                factor = 2.0
+                has_war_support < 0.3
+            }
+        }
+        
+        var:enemy_war_leader = {
+            country_event = { id = simple_peace.2 hours = 2 }
+        }
+    }
+
+    option = {
+        name = simple_peace.1.b
+        ai_chance = {
+            base = 20
+        }
+        add_war_support = -0.05
+    }
+}
+
+country_event = {
+    id = simple_peace.2
+    title = simple_peace.2.t
+    desc = simple_peace.2.d
+    picture = GFX_report_event_war_situation
+    is_triggered_only = yes
+
+    option = {
+        name = simple_peace.2.a
+        ai_chance = {
+            base = 40
+            modifier = {
+                factor = 0.2
+                has_war_support > 0.6
+            }
+            modifier = {
+                factor = 3.0
+                has_war_support < 0.2
+            }
+        }
+    
+        transfer_state = { state = var:peace_deal_state target = FROM }
+        white_peace = { target = FROM }
+        
+        clear_variable = peace_deal_state
+        clear_variable = enemy_war_leader
+    }
+
+    option = {
+        name = simple_peace.2.b
+        ai_chance = {
+            base = 60
+        }
+        add_war_support = 0.05
+        add_manpower = 0.01
+        
+        FROM = {
+            country_event = { id = simple_peace.3 hours = 2 }
+        }
+    }
+}
+
+country_event = {
+    id = simple_peace.3
+    title = simple_peace.3.t
+    desc = simple_peace.3.d
+    picture = GFX_report_event_war_situation
+    is_triggered_only = yes
+
+    option = {
+        name = simple_peace.3.a
+        add_war_support = 0.03
+    }
+}
